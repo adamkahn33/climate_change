@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/jpg" href="../static/images/heart-fill.svg"/>
+
+    <title>Climate Change: The World is Changing</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js" integrity="sha512-0XfwGD1nxplHpehcSVI7lY+m/5L37PNHDt+DOc7aLFckwPXjnjeA1oeNbru7YeI4VLs9i+ADnnHEhP69C9CqTA==" crossorigin="anonymous"></script>
+    <!-- Defer the load of app.js so that the page can load first and then be processed by the script-->
+    <script src="{{ url_for('static', filename='js/explore_app.js') }}" defer></script>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='css/dashboard.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-3 mr-0" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/">&nbsp;&nbsp;<img src="../static/images/logo.png" width="35" height="35" alt="">Climate Crisis Visualized</a>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" aria-current="page" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/">Home</a>
+        <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/explore">Explore</a>
+        <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/rawdata">Raw Data</a>
+        <a >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+      </nav>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row bg-dark">
+        <nav class="col-md-2 d-none d-md-block sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              
+              <li class="nav-item">
+                <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/">
+                  <span data-feather="home"></span>
+                  Home <span class="sr-only"></span>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/explore">
+                  <span data-feather="layers"></span>
+                  Visualizations
+                </a>
+              </li>              
+
+              <li class="nav-item">
+                <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/projections">
+                  <span data-feather="bar-chart-2"></span>
+                  Projections
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/rawdata">
+                  <span data-feather="file"></span>
+                  Raw Data
+                </a>
+              </li>
+              
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Explore CLimate Change</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                  <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="evidence.html">
+                    <span data-feather="file-text"></span>
+                    Evidence
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="causes.html">
+                    <span data-feather="file-text"></span>
+                    Causes
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="effects.html">
+                    <span data-feather="file-text"></span>
+                    Effects
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" style="font-family: 'Georgia', Times New Roman, Times, serif" href="solutions.html">
+                    <span data-feather="file-text"></span>
+                    Solutions
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h2" style="font-family: 'Georgia', Times New Roman, Times, serif">Solutions:</h1>
+          </div>
+            <div class='row'>
+              <div class='col-md responsive-div '></div>
+            <h5 style="font-size: 14px" style="font-family: 'Georgia', Times New Roman, Times, serif">
+              "In executing its mission, NASA's sustainability objectives are to:<br><br>
+1. increase energy efficiency;<br>
+2. increase the use of renewable energy;<br>
+3. measure, report, and reduce NASA's direct and indirect greenhouse gas emissions;<br>
+4. conserve and protect water resources through efficiency, reuse, and stormwater management;<br>
+5. eliminate waste, prevent pollution, and increase recycling;<br>
+6. leverage agency acquisitions to foster markets for sustainable technologies and environmentally preferable materials, products, and services;<br>
+7. design, construct, maintain, and operate high-performance sustainable buildings;<br>
+8. utilize power management options and reduce the number of agency data centers;<br>
+9. support economic growth and livability of the communities where NASA conducts business;<br>
+10. evaluate agency climate change risks and vulnerabilities and develop mitigation and adaptation measures to manage both the short-and long-term effects of climate change on the agency's mission and operations;<br>
+11. raise employee awareness and encourage each individual in the NASA community to apply the concepts of sustainability to every aspect of their daily work to achieve these goals;<br>
+12. maintain compliance with all applicable federal, state, local or territorial law and regulations related to energy security, a healthy environment, and environmentally-sound operations; and<br>
+13. comply with internal NASA requirements and agreements with other entities."
+              <br>
+              <br>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/gSXOxrjCA40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <a href="https://climate.nasa.gov/evidence/">Click here for more information</a>
+              <br>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    
+  </body>
+</html>

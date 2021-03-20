@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Climate Change: The World is Changing</title>
+
+    <link rel="shortcut icon" type="image/jpg" href="../static/images/globe.jpg"/>
+    
+    <!-- Bootstrap -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+    <!-- Leaflet API key -->
+    <!-- <script type="text/javascript" src="static/js/config.js" defer></script> -->
+    <!-- D3 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js" integrity="sha512-0XfwGD1nxplHpehcSVI7lY+m/5L37PNHDt+DOc7aLFckwPXjnjeA1oeNbru7YeI4VLs9i+ADnnHEhP69C9CqTA==" crossorigin="anonymous"></script>
+    <!-- JS  -->
+    <!-- Defer the load of app.js so that the page can load first and then be processed by the script-->
+    <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+
+    <script src="http://www.webglearth.com/v2/api.js"></script>
+    <script src="{{ url_for('static', filename='js/world.js') }}"></script>
+
+    <style>
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+    
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+      </style>
+
+    <!-- Custom styles for this template -->
+     <link href="{{ url_for('static',filename='css/core.css') }}" rel="stylesheet">
+
+</head>
+<body class="d-flex h-100 text-center text-white bg-dark">
+
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+                <h3 class="float-md-start mb-0" style="font-family: 'Georgia', Times New Roman, Times, serif; color:rgb(242, 239, 233)"><img src="../static/images/logo.png" width="90" height="90" alt="">Climate Change: The World is Changing</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a class="nav-link active" style="font-family: 'Georgia', Times New Roman, Times, serif" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/explore">Explore</a>
+                    <a class="nav-link" style="font-family: 'Georgia', Times New Roman, Times, serif" href="/rawdata">Raw Data</a>
+                    <br>
+                    <br>
+                </nav>
+            </nav>
+            </div>
+        </header>
+    
+        <br>
+        <br>
+
+        <main class="px-3">
+            <h1 style="font-family: 'Georgia', Times New Roman, Times, serif; color:rgb(242, 239, 233)"><br> What Is Climate Change?</h1>
+            <br>
+            <p class="lead" style="font-family: 'Georgia', Times New Roman, Times, serif; color:rgb(242, 239, 233)">
+                Click on the text below to learn more:
+            </p>
+        </main>
+        
+        <br>
+
+        <div class='container beige'>
+            <div class="row">
+                <div class="column circle" style="font-family: 'Georgia', Times New Roman, Times, serif"><a href="evidence.html"style="color:rgb(33, 37, 41)"><br><br><br>Evidence: Is climate change real?</a></div>
+                <div class="column circle" style="font-family: 'Georgia', Times New Roman, Times, serif"><a href="causes.html"style="color:rgb(33, 37, 41)"><br><br><br>Causes: Why is climate change happening?</a></div>
+                <div class="column circle" style="font-family: 'Georgia', Times New Roman, Times, serif"><a href="effects.html"style="color:rgb(33, 37, 41)"><br><br><br>Effects: How is it effecting our world today?</a></div>
+                <div class="column circle" style="font-family: 'Georgia', Times New Roman, Times, serif"><a href="solutions.html"style="color:rgb(33, 37, 41)"><br><br><br>Solutions: How do we save our planet?</a></div>
+              </div>
+
+              <br>
+              <br>
+              
+            <div class='d-flex flex-row p-1 mx-auto'>
+                <div class='col-md responsive-div' style="font-family: 'Georgia', Times New Roman, Times, serif; margin-top: -30px; color:rgb(33, 37, 41)">
+                        Located on the interactive globe below are the 5 biggest contributers to carbon dioxide emissions in 2013,<br> as well as their population size at that time.<br> Those countries are: <br>China,<br> the United States of America,<br> India,<br> Russia,<br> and Japan.<br><br> Select a marker to learn more info: 
+                    </div>
+                </div>
+                
+                <br>
+                <br>
+
+
+                </div>
+                <div class='container bg-dark'>
+                    <div style='height: 100%; width: auto;' class='row'>
+                        <div style='height: auto; width: 100%;' class='col-md-12 responsive-div'>
+                            <br>
+                            <br>
+                            <div id="earth_div"></div>
+                            <script>
+                                initialize();
+                            </script>
+                          
+                        </div> <!-- end of col-->
+                    </div> <!-- end of row-->
+            
+            <br>
+
+            <div class = "row">
+                
+                <p class="lead">
+                    <a href="/explore" class="btn btn-lg btn-secondary fw-bold border-white bg-white beige" style="font-family: 'Georgia', Times New Roman, Times, serif; color:rgb(33, 37, 41)">Explore</a>
+                </p>
+
+            </div>
+        
+        </div>                
+        
+
+
+
+        <footer class="mt-auto text-white-50">
+            <!-- <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p> -->
+        </footer>
+    </div>
+    
+    
+        
+</body>
+
+</html>
